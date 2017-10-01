@@ -52,7 +52,7 @@ void Command::showCommandFile()
 
 int main()
 {
-	interface.open("Commands.txt" , ios::ate | ios::in | ios::out ); 		 				/* opens Commands.txt in
+	interface.open("Commands.dat" , ios::ate | ios::in | ios::out ); 		 				/* opens Commands.txt in
 																							 * concatenate mode | input mode | output mode
 																							 * respectively
 																							 */

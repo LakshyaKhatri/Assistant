@@ -79,7 +79,7 @@ void Jarvis::perform()
 int main()
 {
 	Jarvis jarvis1;
-	iCommand.open("Commands.txt",ios::in);
+	iCommand.open("Commands.dat",ios::in);
 	if(iCommand.fail())
 	{
 		cout<<"Error in opening Commands.txt\n";
