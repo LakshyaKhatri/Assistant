@@ -9,7 +9,7 @@ using namespace std;
 #include<iostream>
 #include<stdlib.h>
 #include<fstream>
-
+#include"someImportantFunctions.h"
 fstream interface;
 
 class Command
@@ -71,7 +71,8 @@ int main()
 		obj.writeToFile();
 		cout<<"Command Inserted"<<endl;
 		cout<<"Enter more commands ..? (y/n) : "<<endl;
-		cin.get(more);
+		fflush(stdin);
+		more = getche();
 	
 	}while(more == 'y');
 
