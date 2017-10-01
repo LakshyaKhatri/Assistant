@@ -52,8 +52,8 @@ void Command::showCommandFile()
 
 int main()
 {
-	interface.open("Commands.txt" , ios::ate | ios::in | ios::out | ios::binary); 		 	/* opens Commands.txt in
-																							 * concatenate mode | input mode | output mode | binary mode 
+	interface.open("Commands.txt" , ios::ate | ios::in | ios::out ); 		 				/* opens Commands.txt in
+																							 * concatenate mode | input mode | output mode
 																							 * respectively
 																							 */
 	Command obj;
@@ -67,6 +67,7 @@ int main()
 	
 	do
 	{
+		interface.clear();
 		obj.getData();
 		obj.writeToFile();
 		cout<<"Command Inserted"<<endl;
