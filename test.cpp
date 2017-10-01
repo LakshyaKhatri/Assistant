@@ -5,6 +5,7 @@ using namespace std;
 #include<fstream>
 #include<string.h>
 #include<unistd.h>
+#include"someImportantFunctions.h"
 
 ifstream iCommand;								//object of class fstream , will perform the input operations from file to program
 char finalAction[150];
@@ -31,7 +32,7 @@ void Jarvis::getOrder()
 	fflush(0);
 	cin.getline(order,99);
 
-	if(strcmpi(order,"exit") == 0 || strcmpi(order,"bye") == 0)
+	if(stricmp(order,(char *)"exit") == 0 || stricmp(order,(char *)"bye") == 0)
 	{
 		cout<<"See you Later !";
 		system("espeak -g3 -s150 -v english_wmids \"See you later !\"");
@@ -48,7 +49,7 @@ void Jarvis::searchOrder()
 	//Until EOF is reached do this :-
 	while(iCommand.read((char *) &temp, sizeof(temp)))
 	{
-		if(strcmpi(temp.order,this->order) == 0)
+		if(stricmp(temp.order,this->order) == 0)
 		{
 			//makes the action to be performed
 			strcpy(finalAction,"espeak -g3 -s150 -v english_wmids \"");
@@ -73,10 +74,10 @@ void Jarvis::perform()
 	finalAction[0] = '\0';
 }
 
-void main()
+int main()
 {
-	Jarivs jarvis1;
-	iCommand.open("Commands.txt",std::in | std::binary);
+	Jarvis jarvis1;
+	iCommand.open("Commands.txt",ios::in | ios::binary);
 	if(iCommand.fail())
 	{
 		cout<<"Error in opening Commands.txt\n";
@@ -91,6 +92,7 @@ void main()
 		jarvis1.searchOrder();
 		jarvis1.perform();
 	}
-
+	
+	return 0;
 
 }
