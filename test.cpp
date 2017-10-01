@@ -34,7 +34,7 @@ void Jarvis::getOrder()
 
 	if(stricmp(order,(char *)"exit") == 0 || stricmp(order,(char *)"bye") == 0)
 	{
-		cout<<"See you Later !";
+		cout<<"See you Later !\n";
 		system("espeak -g3 -s150 -v english_wmids \"See you later !\"");
 		sleep(1.5);
 		exit(0);
@@ -69,7 +69,7 @@ void Jarvis::searchOrder()
 
 void Jarvis::perform()
 {
-	cout<<action;
+	cout<<action<<endl;
 	system(finalAction);
 	finalAction[0] = '\0';
 }
@@ -84,7 +84,7 @@ int main()
 		exit(0);
 	}
 	
-	cout<<"Hello! How can I help you ?";
+	cout<<"Hello! How can I help you ?\n";
 	system("espeak -g3 -s150 -v english_wmids \"Hello ! How can I help you ?\"");
 	while(1)
 	{
