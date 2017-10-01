@@ -54,4 +54,6 @@ int stricmp(const char *a,const char *b)
 		else 
 			return(a[i]-b[i]);
 	}
+
+	return 0;
 }
