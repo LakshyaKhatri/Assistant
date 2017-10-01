@@ -44,11 +44,13 @@ void Jarvis::getOrder()
 void Jarvis::searchOrder()
 {
 	Jarvis temp;
-	iCommand.seekg(0,ios::beg);								//takes file pointer to the beginning
-	
+	iCommand.seekg(ios::beg);								//takes file pointer to the beginning
+	iCommand.clear();
 	//Until EOF is reached do this :-
 	while(iCommand.read((char *) &temp, sizeof(temp)))
 	{
+		cout<<temp.order<<endl;
+		cout<<temp.action<<endl;
 		if(stricmp(temp.order,this->order) == 0)
 		{
 			//makes the action to be performed
@@ -63,7 +65,7 @@ void Jarvis::searchOrder()
 
 	//If order not found
 	system("espeak -g3 -s150 -v english_wmids \"I Cannot understand what you say !\"");
-	sleep(1.2);
+	sleep(0.6);
 	system("espeak -g3 -s150 -v english_wmids \"I will learn this thing soon.\"");
 }
 
@@ -84,8 +86,8 @@ int main()
 		exit(0);
 	}
 	
-	cout<<"Hello! How can I help you ?\n";
-	system("espeak -g3 -s150 -v english_wmids \"Hello ! How can I help you ?\"");
+	cout<<"Hello! How can Jarvis help you ?\n";
+	system("espeak -g3 -s150 -v english_wmids \"Hello ! How can Jarvis help you ?\"");
 	while(1)
 	{
 		jarvis1.getOrder();
