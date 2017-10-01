@@ -42,10 +42,10 @@ char getche(void)
 } 
 
 //compares strings ignoring case
-int stricmp(const char *a,const char *b)
+int stricmp(char a[],char b[])
 {
-	int i;
-	while(a[i] != '\0' || b[i] != '\0' )
+	int i = 0 ;
+	while(a[i] != '\0' && b[i] != '\0' )
 	{
 		if(a[i]-b[i] == 0 || a[i] + 32 - b[i] == 0 || a[i] - 32 + b[i] == 0)
 		{
@@ -53,6 +53,8 @@ int stricmp(const char *a,const char *b)
 		}
 		else 
 			return(a[i]-b[i]);
+
+		i++;
 	}
 
 	return 0;
