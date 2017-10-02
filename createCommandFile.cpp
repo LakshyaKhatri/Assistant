@@ -10,6 +10,7 @@ using namespace std;
 #include<stdlib.h>
 #include<fstream>
 #include"someImportantFunctions.h"
+
 fstream interface;
 
 class Command
@@ -38,13 +39,13 @@ void Command::getData()
 
 void Command::writeToFile()
 {
-	interface.seekg(0,ios::end);								//takes file pointer to the end .
+	interface.seekp(0,ios::end);								//takes file pointer to the end .
 	interface.write((char *) this,sizeof(*this));
 }
 
 void Command::showCommandFile()
 {
-	interface.seekg(0);			//takes file pointer to the beginning
+	interface.seekp(0);			//takes file pointer to the beginning
 	
 	while(interface.read( (char *) this , sizeof(*this)))
 		cout<<this->order<<"    "<<this->action<<endl;
@@ -52,7 +53,7 @@ void Command::showCommandFile()
 
 int main()
 {
-	interface.open("Commands.dat" , ios::ate | ios::in | ios::out ); 		 				/* opens Commands.txt in
+	interface.open("Commands.dat" , ios::ate | ios::out ); 		 							/* opens Commands.txt in
 																							 * concatenate mode | input mode | output mode
 																							 * respectively
 																							 */

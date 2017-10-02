@@ -24,6 +24,7 @@ class Jarvis
 		void getOrder();
 		void searchOrder();
 		void perform();
+		void fetch();
 };
 
 void Jarvis::getOrder()
@@ -46,11 +47,10 @@ void Jarvis::searchOrder()
 	Jarvis temp;
 	iCommand.seekg(ios::beg);								//takes file pointer to the beginning
 	iCommand.clear();
+
 	//Until EOF is reached do this :-
 	while(iCommand.read((char *) &temp, sizeof(temp)))
 	{
-		cout<<temp.order<<endl;
-		cout<<temp.action<<endl;
 		if(stricmp(temp.order,this->order) == 0)
 		{
 			//makes the action to be performed
@@ -60,7 +60,6 @@ void Jarvis::searchOrder()
 
 			return;
 		}
-
 	}
 
 	//If order not found
@@ -71,11 +70,25 @@ void Jarvis::searchOrder()
 
 void Jarvis::perform()
 {
-	cout<<action<<endl;
+	cout<<action<<"\n";
 	system(finalAction);
 	finalAction[0] = '\0';
 }
 
+void Jarvis::fetch()
+{
+	char temp[100];
+	int i=0,k=0;
+	while(action[i] != '\0')
+	{
+		if( (action[i] >= 65 && action[i] <= 90) || (action[i] >= 97 && action[i] <=122))
+		{
+			temp[k++] = action[i];
+		}
+		i++;
+	}
+	strcpy(action,temp);
+}
 int main()
 {
 	Jarvis jarvis1;
@@ -92,6 +105,7 @@ int main()
 	{
 		jarvis1.getOrder();
 		jarvis1.searchOrder();
+		jarvis1.fetch();
 		jarvis1.perform();
 	}
 	
