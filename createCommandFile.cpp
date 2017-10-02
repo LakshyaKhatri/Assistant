@@ -45,7 +45,7 @@ void Command::writeToFile()
 
 void Command::showCommandFile()
 {
-	interface.seekp(0);			//takes file pointer to the beginning
+	interface.seekg(0);			//takes file pointer to the beginning
 	
 	while(interface.read( (char *) this , sizeof(*this)))
 		cout<<this->order<<"    "<<this->action<<endl;
@@ -53,9 +53,9 @@ void Command::showCommandFile()
 
 int main()
 {
-	interface.open("Commands.dat" , ios::ate | ios::out ); 		 							/* opens Commands.txt in
-																							 * concatenate mode | input mode | output mode
-																							 * respectively
+	interface.open("Commands.dat" , ios::ate | ios::out | ios::in | ios::binary); 			/* opens Commands.txt in
+																							 * concatenate mode| input mode| output mode| input mode| binary mode
+																							 * respectively.
 																							 */
 	Command obj;
 	char more = 'y';

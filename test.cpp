@@ -7,14 +7,14 @@ using namespace std;
 #include<unistd.h>
 #include"someImportantFunctions.h"
 
-ifstream iCommand;								//object of class fstream , will perform the input operations from file to program
+fstream iCommand;								//object of class fstream , will perform the input operations from file to program
 char finalAction[150];
 
 class Jarvis
 {
 	private:
 		char order[100];
-		char action[150];
+		char action[100];
 	public:
 		Jarvis()
 		{
@@ -58,8 +58,9 @@ void Jarvis::searchOrder()
 			strcpy(this->action,temp.action);
 			return;
 		}
-		cout<<temp.action<<endl;
 		cout<<temp.order<<endl;
+		cout<<temp.action<<endl;
+		
 	}
 
 	//If order not found
@@ -75,37 +76,23 @@ void Jarvis::perform()
 	finalAction[0] = '\0';
 }
 
-/*
-void Jarvis::fetch()
-{
-	char temp[100];
-	int i=0,k=0;
-	while(action[i] != '\0')
-	{
-		if( (action[i] >= 65 && action[i] <= 90) || (action[i] >= 97 && action[i] <=122))
-		{
-			temp[k++] = action[i];
-		}
-		i++;
-	}
-	strcpy(action,temp);
-}
-*/
 
 int main()
 {
 	Jarvis jarvis1;
-	iCommand.open("Commands.dat",ios::in);
+	iCommand.open("Commands.dat", ios::ate | ios::out | ios::in | ios::binary );
 	if(iCommand.fail())
 	{
-		cout<<"Error in opening Commands.txt\n";
+		cout<<"Error in opening Commands.dat\n";
 		exit(0);
 	}
 	
 	cout<<"Hello! How can Jarvis help you ?\n";
 	system("espeak -g3 -s150 -v english_wmids \"Hello ! How can Jarvis help you ?\"");
+
 	while(1)
 	{
+		iCommand.clear();
 		jarvis1.getOrder();
 		jarvis1.searchOrder();
 		jarvis1.perform();
