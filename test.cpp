@@ -24,7 +24,6 @@ class Jarvis
 		void getOrder();
 		void searchOrder();
 		void perform();
-		void fetch();
 };
 
 void Jarvis::getOrder()
@@ -54,6 +53,8 @@ void Jarvis::searchOrder()
 		if(stricmp(temp.order,this->order) == 0)
 		{
 			//makes the action to be performed
+			cout<<temp.order<<endl;
+			cout<<temp.action<<endl;
 			strcpy(finalAction,"espeak -g3 -s150 -v english_wmids \"");
 			strcat(finalAction,this->action);
 			strcat(finalAction,"\"");
@@ -75,6 +76,7 @@ void Jarvis::perform()
 	finalAction[0] = '\0';
 }
 
+/*
 void Jarvis::fetch()
 {
 	char temp[100];
@@ -89,6 +91,8 @@ void Jarvis::fetch()
 	}
 	strcpy(action,temp);
 }
+*/
+
 int main()
 {
 	Jarvis jarvis1;
@@ -105,7 +109,6 @@ int main()
 	{
 		jarvis1.getOrder();
 		jarvis1.searchOrder();
-		jarvis1.fetch();
 		jarvis1.perform();
 	}
 	
