@@ -58,9 +58,6 @@ void Jarvis::searchOrder()
 			strcpy(this->action,temp.action);
 			return;
 		}
-		cout<<temp.order<<endl;
-		cout<<temp.action<<endl;
-		
 	}
 
 	//If order not found
@@ -71,7 +68,7 @@ void Jarvis::searchOrder()
 
 void Jarvis::perform()
 {
-	//cout<<action<<"\n";
+	cout<<action<<"\n";
 	system(finalAction);
 	finalAction[0] = '\0';
 }
@@ -80,7 +77,7 @@ void Jarvis::perform()
 int main()
 {
 	Jarvis jarvis1;
-	iCommand.open("Commands.dat", ios::ate | ios::out | ios::in | ios::binary );
+	iCommand.open("Commands.txt", ios::ate | ios::out | ios::in | ios::binary );
 	if(iCommand.fail())
 	{
 		cout<<"Error in opening Commands.dat\n";
