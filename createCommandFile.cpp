@@ -53,7 +53,7 @@ void Command::showCommandFile()
 	interface.seekg(0);			//takes file pointer to the beginning
 	
 	while(interface.read( (char *) this , sizeof(*this)))
-		cout<<this->order<<"    "<<this->action<<endl;
+		cout<<this->commandNo<<". "<<this->order<<"    "<<this->action<<endl;
 
 	fflush(stdin);
 	getch();
@@ -71,8 +71,7 @@ void Command::overwriteCommand()
 	interface.seekp(updateLocation);																//takes file pointer cursor to specified location
 	cout<<"Enter new order : ";
 	cin.getline(order,99);
-	cout<<"Enter new action : ";
-	cin.ignore();																					//ignores '\n'
+	cout<<"Enter new action : ";																					//ignores '\n'
 	cin.getline(action,99);
 
 	interface.write((char *)this , sizeof(*this));
@@ -112,9 +111,7 @@ int main()
 				obj.getData();
 				obj.writeToFile();
 				cout<<"Command Inserted"<<endl;
-				cout<<"Enter more commands ..? (y/n) : "<<endl;
-				fflush(stdin);
-				more = getche();
+				getch();
 				break;
 	
 			case 1:
