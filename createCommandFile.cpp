@@ -33,13 +33,9 @@ class Command
 
 void Command::getData()
 {
-	fflush(0);
-	fflush(stdin);
 	cout<<"Enter the order : ";
 	cin.getline(order,99);				//take a complete sentence from the keyboard until "ENTER" key is pressed ( defined in iostream ).
 	cout<<"Enter the action : ";
-	fflush(0);
-	fflush(stdin);
 	cin.getline(action,99);	
 }
 
@@ -58,6 +54,9 @@ void Command::showCommandFile()
 	
 	while(interface.read( (char *) this , sizeof(*this)))
 		cout<<this->order<<"    "<<this->action<<endl;
+
+	fflush(stdin);
+	getch();
 }
 
 void Command::overwriteCommand()
@@ -65,19 +64,23 @@ void Command::overwriteCommand()
 	long unsigned overwriteCommandNo = 0,updateLocation = 0;
 	cout<<"\nOverwrite which command\n";
 	cin>>overwriteCommandNo;
+	cin.ignore();
 	updateLocation = (overwriteCommandNo - 1) * sizeof(*this);
 	if(interface.eof())
 		interface.clear();
 	interface.seekp(updateLocation);																//takes file pointer cursor to specified location
-	fflush(stdin);
-	fflush(0);
 	cout<<"Enter new order : ";
 	cin.getline(order,99);
-	fflush(stdin);
-	fflush(0);
 	cout<<"Enter new action : ";
+	cin.ignore();																					//ignores '\n'
 	cin.getline(action,99);
+
+	interface.write((char *)this , sizeof(*this));
+
 	cout<<"Done . \n";
+
+	fflush(stdin);
+	getch();
 }
 
 int main()
@@ -96,25 +99,22 @@ int main()
 		exit(1);
 	}
 
-	cout<<"Enter your choice :-\n1.Show Commands\n2.Write new command\n3.Overwrite previous command\n4.Exit";
-	cin>>choice;
-
 	while(1)
 	{
+		cout<<"Enter your choice :-\n1.Show Commands\n2.Write new command\n3.Overwrite previous command\n4.Exit";
+		cin>>choice;
+		cin.ignore();
+		system("clear");
 		switch(choice)
 		{
 			case 2:
-				do
-				{
-					interface.clear();
-					obj.getData();
-					obj.writeToFile();
-					cout<<"Command Inserted"<<endl;
-					cout<<"Enter more commands ..? (y/n) : "<<endl;
-					fflush(stdin);
-					more = getche();
-		
-				}while(more == 'y');
+				interface.clear();
+				obj.getData();
+				obj.writeToFile();
+				cout<<"Command Inserted"<<endl;
+				cout<<"Enter more commands ..? (y/n) : "<<endl;
+				fflush(stdin);
+				more = getche();
 				break;
 	
 			case 1:
