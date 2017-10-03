@@ -5,7 +5,7 @@ using namespace std;
 #include<fstream>
 #include<string.h>
 #include<unistd.h>
-#include"someImportantFunctions.h"
+#include"someImportantFunctions.h"				//I made this header file :)
 
 fstream iCommand;								//object of class fstream , will perform the input operations from file to program
 char finalAction[150];
@@ -13,6 +13,7 @@ int flag = 0;
 class Jarvis
 {
 	private:
+		int commandNo;
 		char order[100];
 		char action[100];
 	public:
@@ -83,7 +84,7 @@ void Jarvis::perform()
 int main()
 {
 	Jarvis jarvis1;
-	iCommand.open("Commands.txt", ios::ate | ios::out | ios::in | ios::binary );
+	iCommand.open("Commands.txt", ios::ate | ios::out | ios::in );
 	if(iCommand.fail())
 	{
 		cout<<"Error in opening Commands.dat\n";
