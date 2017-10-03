@@ -10,17 +10,17 @@ using namespace std;
 fstream iCommand;								//object of class fstream , will perform the input operations from file to program
 char finalAction[150];
 int flag = 0;
+
 class Jarvis
 {
 	private:
-		int commandNo;
 		char order[100];
 		char action[100];
 	public:
 		Jarvis()
 		{
 			order[0] = '\0';
-			action[100] = '\0'; 
+			action[0] = '\0'; 
 		}
 		void getOrder();
 		void searchOrder();
@@ -35,7 +35,7 @@ void Jarvis::getOrder()
 
 	if(stricmp(order,(char *)"exit") == 0 || stricmp(order,(char *)"bye") == 0)
 	{
-		cout<<"See you Later !\n";
+		cout<<"\033[1;36mSee you Later !\033[0m\n";											//prints text in cyan blue color
 		system("espeak -g3 -s150 -a200 -v english_wmids \"See you later !\"");
 		sleep(1.5);
 		exit(0);
@@ -53,6 +53,7 @@ void Jarvis::searchOrder()
 		if(stricmp(temp.order,this->order) == 0)
 		{
 			//makes the action to be performed
+			finalAction[0] = '\0';
 			strcpy(finalAction,"espeak -a200 -g3 -s150 -v english_wmids \"");
 			strcat(finalAction,temp.action);
 			strcat(finalAction,"\"");
@@ -63,10 +64,10 @@ void Jarvis::searchOrder()
 	}
 
 	//If order not found
-	cout<<"I cannot understand what you say !"<<endl;
+	cout<<"\033[1;36mI cannot understand what you say !\033[0m"<<endl;
 	system("espeak -g3 -s150 -a200 -v english_wmids \"I Cannot understand what you say !\"");
 	sleep(0.6);
-	cout<<"I will learn these things soon."<<endl;
+	cout<<"\033[1;36mI will learn these things soon.\033[0m"<<endl;
 	system("espeak -g3 -s150 -a200 -v english_wmids \"I will learn these things soon.\"");
 	flag = 1;
 }
@@ -74,7 +75,7 @@ void Jarvis::searchOrder()
 void Jarvis::perform()
 {
 	if(flag == 0)
-		cout<<action<<"\n";
+		cout<<"\033[1;36m"<<action<<"\033[0m"<<"\n";
 
 	system(finalAction);
 	finalAction[0] = '\0';
@@ -91,7 +92,7 @@ int main()
 		exit(0);
 	}
 	
-	cout<<"Hello! How can Jarvis help you ?\n";
+	cout<<"\n\033[1;36mHello! How can Jarvis help you ?\033[0m\n";
 	system("espeak -g3 -s150 -a200 -v english_wmids \"Hello ! How can Jarvis help you ?\"");
 
 	while(1)

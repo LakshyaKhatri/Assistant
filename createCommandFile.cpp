@@ -16,7 +16,6 @@ fstream interface;
 class Command
 {
 	private:
-		char commandNo;
 		char order[100];
 		char action[100];
 	public:
@@ -44,16 +43,16 @@ void Command::writeToFile()
 	long unsigned lastByte = 0;
 	interface.seekp(0,ios::end);								//takes file pointer to the end .
 	lastByte = interface.tellg();
-	commandNo = lastByte/sizeof(*this);
 	interface.write((char *) this,sizeof(*this));
 }
 
 void Command::showCommandFile()
 {
 	interface.seekg(0);			//takes file pointer to the beginning
+	int i = 1;
 	
 	while(interface.read( (char *) this , sizeof(*this)))
-		cout<<this->commandNo<<". "<<this->order<<"    "<<this->action<<endl;
+		cout<<i++<<". "<<this->order<<"    "<<this->action<<endl;
 
 	fflush(stdin);
 	getch();
@@ -72,7 +71,7 @@ void Command::overwriteCommand()
 	cout<<"Enter new order : ";
 	cin.getline(order,99);
 	cout<<"Enter new action : ";																					//ignores '\n'
-	cin.getline(action,99);
+	cin.getline(action,99); 
 
 	interface.write((char *)this , sizeof(*this));
 
