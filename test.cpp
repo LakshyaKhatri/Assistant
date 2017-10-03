@@ -9,7 +9,7 @@ using namespace std;
 
 fstream iCommand;								//object of class fstream , will perform the input operations from file to program
 char finalAction[150];
-
+int flag = 0;
 class Jarvis
 {
 	private:
@@ -35,7 +35,7 @@ void Jarvis::getOrder()
 	if(stricmp(order,(char *)"exit") == 0 || stricmp(order,(char *)"bye") == 0)
 	{
 		cout<<"See you Later !\n";
-		system("espeak -g3 -s150 -v english_wmids \"See you later !\"");
+		system("espeak -g3 -s150 -a200 -v english_wmids \"See you later !\"");
 		sleep(1.5);
 		exit(0);
 	}
@@ -52,23 +52,29 @@ void Jarvis::searchOrder()
 		if(stricmp(temp.order,this->order) == 0)
 		{
 			//makes the action to be performed
-			strcpy(finalAction,"espeak -g3 -s150 -v english_wmids \"");
+			strcpy(finalAction,"espeak -a200 -g3 -s150 -v english_wmids \"");
 			strcat(finalAction,temp.action);
 			strcat(finalAction,"\"");
 			strcpy(this->action,temp.action);
+			flag = 0;
 			return;
 		}
 	}
 
 	//If order not found
-	system("espeak -g3 -s150 -v english_wmids \"I Cannot understand what you say !\"");
+	cout<<"I cannot understand what you say !"<<endl;
+	system("espeak -g3 -s150 -a200 -v english_wmids \"I Cannot understand what you say !\"");
 	sleep(0.6);
-	system("espeak -g3 -s150 -v english_wmids \"I will learn these thing soon.\"");
+	cout<<"I will learn these things soon."<<endl;
+	system("espeak -g3 -s150 -a200 -v english_wmids \"I will learn these things soon.\"");
+	flag = 1;
 }
 
 void Jarvis::perform()
 {
-	cout<<action<<"\n";
+	if(flag == 0)
+		cout<<action<<"\n";
+
 	system(finalAction);
 	finalAction[0] = '\0';
 }
@@ -85,7 +91,7 @@ int main()
 	}
 	
 	cout<<"Hello! How can Jarvis help you ?\n";
-	system("espeak -g3 -s150 -v english_wmids \"Hello ! How can Jarvis help you ?\"");
+	system("espeak -g3 -s150 -a200 -v english_wmids \"Hello ! How can Jarvis help you ?\"");
 
 	while(1)
 	{
