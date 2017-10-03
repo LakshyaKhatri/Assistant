@@ -55,7 +55,7 @@ int stricmp (const char *p1, const char *p2)
       if (c1 == '\0')
         return c1 - c2;
   }
-  while (c1 == c2 || c1 == c2-32 || c1 == c2+32);
+  while (c1 == c2 || c1 == c2-32 || c1 == c2+32 );	
   return c1 - c2;
 }
 
