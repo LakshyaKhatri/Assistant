@@ -7,17 +7,17 @@ using namespace std;
 #include<unistd.h>
 #include"someImportantFunctions.h"				//I made this header file :)
 
-fstream iCommand;								//object of class fstream , will perform the input operations from file to program
+fstream iCommand,iMath;								//object of class fstream , will perform the input operations from file to program
 char finalAction[150];
 int flag = 0;
 
-class Jarvis
+class GeneralCommand
 {
 	private:
 		char order[100];
 		char action[100];
 	public:
-		Jarvis()
+		GeneralCommand()
 		{
 			order[0] = '\0';
 			action[0] = '\0'; 
@@ -27,7 +27,7 @@ class Jarvis
 		void perform();
 };
 
-void Jarvis::getOrder()
+void GeneralCommand::getOrder()
 {
 	fflush(stdin);
 	fflush(0);
@@ -35,19 +35,21 @@ void Jarvis::getOrder()
 
 	if(stricmp(order,(char *)"exit") == 0 || stricmp(order,(char *)"bye") == 0)
 	{
-		cout<<"\033[1;36mSee you Later !\033[0m\n";											//prints text in cyan blue color
+		cout<<"\033[1;36mSee you Later !\033[0m\n";											//prints text in cyan bright bold color
 		system("espeak -g3 -s150 -a200 -v english_wmids \"See you later !\"");
+		iCommand.close();
+		//iMath.close()
 		sleep(1.5);
 		exit(0);
 	}
 }
 
-void Jarvis::searchOrder()
+void GeneralCommand::searchOrder()
 {
-	Jarvis temp;
+	GeneralCommand temp;
 	iCommand.seekg(ios::beg);								//takes file pointer to the beginning
 
-	//Until EOF is reached do this :-
+	//Until EOF is reached search order in Commands.txt :-
 	while(iCommand.read((char *) &temp, sizeof(temp)))
 	{
 		if(stricmp(temp.order,this->order) == 0)
@@ -63,6 +65,9 @@ void Jarvis::searchOrder()
 		}
 	}
 
+	//Until EOF is reached search order in Math.txt
+	//while(iMath.read)
+
 	//If order not found
 	cout<<"\033[1;36mI cannot understand what you say !\033[0m"<<endl;
 	system("espeak -g3 -s150 -a200 -v english_wmids \"I Cannot understand what you say !\"");
@@ -72,7 +77,7 @@ void Jarvis::searchOrder()
 	flag = 1;
 }
 
-void Jarvis::perform()
+void GeneralCommand::perform()
 {
 	if(flag == 0)
 		cout<<"\033[1;36m"<<action<<"\033[0m"<<"\n";
@@ -82,10 +87,24 @@ void Jarvis::perform()
 }
 
 
+class MathCommand
+{
+	private:
+		int order[50];
+		int taskCode;
+	public:
+		MathCommand()
+		{
+			order[0] = '\0';
+			taskCode = 0;
+		}
+		void getOrder();
+};
 int main()
 {
-	Jarvis jarvis1;
+	GeneralCommand general;
 	iCommand.open("Commands.txt", ios::ate | ios::out | ios::in );
+	//iMath.open("Math.txt", ios::ate | ios::out | ios::in );
 	if(iCommand.fail())
 	{
 		cout<<"Error in opening Commands.dat\n";
@@ -98,11 +117,10 @@ int main()
 	while(1)
 	{
 		iCommand.clear();
-		jarvis1.getOrder();
-		jarvis1.searchOrder();
-		jarvis1.perform();
+		general.getOrder();
+		general.searchOrder();
+		general.perform();
 	}
-	
-	return 0;
 
+	return 0;
 }
