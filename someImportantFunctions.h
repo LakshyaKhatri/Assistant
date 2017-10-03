@@ -4,6 +4,7 @@
 static struct termios old;
 static struct termios new_;
 /* Initialize new terminal i/o settings */
+
 void initTermios(int echo) 
 {
   tcgetattr(0, &old); /* grab old terminal i/o settings */
@@ -58,7 +59,7 @@ int stricmp (const char *p1, const char *p2)
   return c1 - c2;
 }
 
-namespace Color {
+/*namespace Color {
     enum Code {
         FG_RED      = 31,
         FG_GREEN    = 32,
@@ -79,5 +80,5 @@ namespace Color {
         }
     };
 }
-
+*/
 
