@@ -3,10 +3,6 @@ using namespace std;
 #include <termios.h>
 #include <stdio.h>
 #include<iostream>
-//#define LEFT 
-//#define RIGHT
-//#define UP
-//#define DOWN
 
 static struct termios old;
 static struct termios new_;
@@ -54,13 +50,16 @@ int stricmp (const char *p1, const char *p2)
 {
   const unsigned char *s1 = (const unsigned char *) p1;
   const unsigned char *s2 = (const unsigned char *) p2;
-  unsigned char c1, c2;
+  unsigned char c1, c2, c3;
   do
   {
       c1 = (unsigned char) *s1++;
       c2 = (unsigned char) *s2++;
-	  if (c1 == '\0' && (c2 == ' ' || c2 == '?' || c2 == '!' || c2 == '.'))
+	  c3 = (unsigned char) *s2;
+	  
+	  if (c1 == '\0' && ((c2 == ' ' && (c3 == '!' || c3 == '?' || c3 == '.')) || c2 == '?' || c2 == '!' || c2 == '.'))
         return 0;
+
 	  if(c1 == '\0')
 		  return c1 - c2;
   }
@@ -68,17 +67,16 @@ int stricmp (const char *p1, const char *p2)
  	  return c1 - c2;
 }
 
-//takes input from user and creates and if any number is encountered it pushes that number inside a stack
-/*void getInputOrder()
+//this structure has been created for manupulating
+//the stack 
+typedef struct NODE
 {
-	char temp[100];
-	char ch = '\0';
-	int i = 0;
-	do
-	{
-		ch = getche();
-		if(ch == UP)
-			cout<<"\n"
+	int number;
+	unsigned int *next;
+}NODE;
 
-	}while()
-}*/
+//definition of stack
+void stack()
+{
+	
+}

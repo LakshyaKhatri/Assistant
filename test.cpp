@@ -69,6 +69,7 @@ void GeneralCommand::searchOrder()
 	cout<<"\033[1;36mI will learn these things soon.\033[0m"<<endl;
 	system("espeak -g3 -s150 -a200 -v english_wmids \"I will learn these things soon.\"");
 	cout<<"\033[1;36mWant to teach me..??\033[0m"<<endl;
+	fflush(stdin);
 	ch = getche();
 	if(ch == 'y')
 		createCommandMainMethod();
