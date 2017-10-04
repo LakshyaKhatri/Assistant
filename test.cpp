@@ -1,8 +1,9 @@
-
+//#include"someImportantFunctions.h"
 #include<stdlib.h>
 #include<fstream>
 #include<string.h>
 #include<unistd.h>
+#include"createCommandFile.cpp"
 
 fstream iCommand;								//object of class fstream , will perform the input operations from file to program
 char finalAction[150];
@@ -44,7 +45,7 @@ void GeneralCommand::searchOrder()
 {
 	GeneralCommand temp;
 	iCommand.seekg(ios::beg);								//takes file pointer to the beginning
-
+	char ch = '\0';
 	//Until EOF is reached search order in Commands.txt :-
 	while(iCommand.read((char *) &temp, sizeof(temp)))
 	{
@@ -61,15 +62,16 @@ void GeneralCommand::searchOrder()
 		}
 	}
 
-	//Until EOF is reached search order in Math.txt
-	//while(iMath.read)
-
 	//If order not found
 	cout<<"\033[1;36mI cannot understand what you say !\033[0m"<<endl;
 	system("espeak -g3 -s150 -a200 -v english_wmids \"I Cannot understand what you say !\"");
 	sleep(0.6);
 	cout<<"\033[1;36mI will learn these things soon.\033[0m"<<endl;
 	system("espeak -g3 -s150 -a200 -v english_wmids \"I will learn these things soon.\"");
+	cout<<"\033[1;36mWant to teach me..??\033[0m"<<endl;
+	ch = getche();
+	if(ch == 'y')
+		createCommandMainMethod();
 	flag = 1;
 }
 

@@ -79,7 +79,7 @@ void Command::overwriteCommand()
 	getch();
 }
 
-int main()
+int createCommandMainMethod()
 {
 	interface.open("Commands.txt" , ios::ate | ios::out | ios::in );			 			/* opens Commands.txt in
 																							 * concatenate mode| input mode| output mode| input mode| binary mode
@@ -88,7 +88,7 @@ int main()
 	Command obj;
 	int choice;
 	char more = 'y';
-
+	int close = 0;
 	if(interface.fail())			//exits the execution if there is any error while opening the file
 	{
 		cout<<"Error in opening the file\n";
@@ -121,11 +121,16 @@ int main()
 	
 			case 4:
 				interface.close();
-					exit(0);
-	
+				//exit(0);
+				close = 1;
+				break;
+
 			default :
 				cout<<"\nInvalid option\n";
 				break;
 		}
+
+		if(close)
+			break;
 	}
 }

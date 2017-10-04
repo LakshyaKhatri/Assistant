@@ -3,6 +3,11 @@ using namespace std;
 #include <termios.h>
 #include <stdio.h>
 #include<iostream>
+//#define LEFT 
+//#define RIGHT
+//#define UP
+//#define DOWN
+
 static struct termios old;
 static struct termios new_;
 /* Initialize new terminal i/o settings */
@@ -63,3 +68,17 @@ int stricmp (const char *p1, const char *p2)
  	  return c1 - c2;
 }
 
+//takes input from user and creates and if any number is encountered it pushes that number inside a stack
+/*void getInputOrder()
+{
+	char temp[100];
+	char ch = '\0';
+	int i = 0;
+	do
+	{
+		ch = getche();
+		if(ch == UP)
+			cout<<"\n"
+
+	}while()
+}*/
