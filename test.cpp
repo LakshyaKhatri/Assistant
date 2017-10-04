@@ -1,13 +1,10 @@
-using namespace std;
-#include<iostream>
+
 #include<stdlib.h>
-#include<termios.h>
 #include<fstream>
 #include<string.h>
 #include<unistd.h>
-#include"someImportantFunctions.h"				//I made this header file :)
 
-fstream iCommand,iMath;								//object of class fstream , will perform the input operations from file to program
+fstream iCommand;								//object of class fstream , will perform the input operations from file to program
 char finalAction[150];
 int flag = 0;
 
@@ -32,13 +29,12 @@ void GeneralCommand::getOrder()
 	fflush(stdin);
 	fflush(0);
 	cin.getline(order,99);
-
+	
 	if(stricmp(order,(char *)"exit") == 0 || stricmp(order,(char *)"bye") == 0)
 	{
 		cout<<"\033[1;36mSee you Later !\033[0m\n";											//prints text in cyan bright bold color
 		system("espeak -g3 -s150 -a200 -v english_wmids \"See you later !\"");
 		iCommand.close();
-		//iMath.close()
 		sleep(1.5);
 		exit(0);
 	}
@@ -86,25 +82,10 @@ void GeneralCommand::perform()
 	finalAction[0] = '\0';
 }
 
-
-class MathCommand
-{
-	private:
-		int order[50];
-		int taskCode;
-	public:
-		MathCommand()
-		{
-			order[0] = '\0';
-			taskCode = 0;
-		}
-		void getOrder();
-};
 int main()
 {
 	GeneralCommand general;
 	iCommand.open("Commands.txt", ios::ate | ios::out | ios::in );
-	//iMath.open("Math.txt", ios::ate | ios::out | ios::in );
 	if(iCommand.fail())
 	{
 		cout<<"Error in opening Commands.dat\n";

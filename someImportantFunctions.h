@@ -1,6 +1,8 @@
+using namespace std;
+
 #include <termios.h>
 #include <stdio.h>
-#include<ostream>
+#include<iostream>
 static struct termios old;
 static struct termios new_;
 /* Initialize new terminal i/o settings */
@@ -52,33 +54,12 @@ int stricmp (const char *p1, const char *p2)
   {
       c1 = (unsigned char) *s1++;
       c2 = (unsigned char) *s2++;
-      if (c1 == '\0')
-        return c1 - c2;
+	  if (c1 == '\0' && (c2 == ' ' || c2 == '?' || c2 == '!' || c2 == '.'))
+        return 0;
+	  if(c1 == '\0')
+		  return c1 - c2;
   }
   while (c1 == c2 || c1 == c2-32 || c1 == c2+32 );	
-  return c1 - c2;
+ 	  return c1 - c2;
 }
-
-/*namespace Color {
-    enum Code {
-        FG_RED      = 31,
-        FG_GREEN    = 32,
-        FG_BLUE     = 34,
-        FG_DEFAULT  = 39,
-        BG_RED      = 41,
-        BG_GREEN    = 42,
-        BG_BLUE     = 44,
-        BG_DEFAULT  = 49
-    };
-    class Modifier {
-        Code code;
-    public:
-        Modifier(Code pCode) : code(pCode) {}
-        friend std::ostream&
-        operator<<(std::ostream& os, const Modifier& mod) {
-            return os << "\033[" << mod.code << "m";
-        }
-    };
-}
-*/
 

@@ -5,8 +5,6 @@
  * using Binary or Interpolation search
  */
 
-using namespace std;
-#include<iostream>
 #include<stdlib.h>
 #include<fstream>
 #include"someImportantFunctions.h"
