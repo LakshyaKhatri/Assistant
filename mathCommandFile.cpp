@@ -1,6 +1,8 @@
 #include"someImportantFunctions.h"
 #include<string.h>
 
+fstream ioMath;
+
 class MathCommand
 {
 	private:
@@ -10,6 +12,13 @@ class MathCommand
 		void parseOrder();
 		void searchOrder();
 		void perform();
+		MathCommand()
+		{
+			
+		}
 };
 
-void MathCommand::
+void MathCommand::parseOrder()
+{
+
+}

@@ -68,15 +68,38 @@ int stricmp (const char *p1, const char *p2)
 }
 
 //this structure has been created for manupulating
-//the stack 
-typedef struct NODE
-{
-	int number;
-	unsigned int *next;
-}NODE;
+//the stack
 
-//definition of stack
-void stack()
+class Stack
 {
-	
+	private:
+		int top;
+		int stck[5];
+	public:
+		int pop();
+		void push(int );
+		Stack()
+		{
+			top = -1;
+		}
+};
+
+int Stack::pop()
+{
+	if(top == -1)
+	{
+		cout<<"\nStack is empty"<<endl;
+		return;
+	}
+	return (stck[top--]);
+}
+
+void Stack::push(int item)
+{
+	if(top >= 4)
+	{
+		cout<<"\nStack Ovewflow"<<endl;
+		return;
+	}
+	stck[++top] = item;
 }
