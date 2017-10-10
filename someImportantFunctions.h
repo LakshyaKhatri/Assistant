@@ -67,9 +67,8 @@ int stricmp (const char *p1, const char *p2)
  	  return c1 - c2;
 }
 
-//this structure has been created for manupulating
-//the stack
-
+//this structure has been created for manipulating
+//numbers in the math operations
 class Stack
 {
 	private:
@@ -89,7 +88,7 @@ int Stack::pop()
 	if(top == -1)
 	{
 		cout<<"\nStack is empty"<<endl;
-		return;
+		return 0;
 	}
 	return (stck[top--]);
 }
