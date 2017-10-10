@@ -136,6 +136,7 @@ class LinkedList
 		void traverse();
 		void insert(char*);
 		void remove(char*);
+		char* getFirst();
 		~LinkedList();
 };
 
@@ -194,6 +195,15 @@ void LinkedList::remove(char *d)
 
 	prev = q->next;
 	delete q;
+}
+
+char* LinkedList::getFirst()
+{
+	char temp[20];
+	Node *p = START;
+	strcpy(temp,START->data);
+	START = START->next;
+	delete p;
 }
 
 LinkedList::~LinkedList()
