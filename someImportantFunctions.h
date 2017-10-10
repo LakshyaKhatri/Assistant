@@ -4,6 +4,8 @@ using namespace std;
 #include <stdio.h>
 #include<iostream>
 
+/**************************************************************************************************************************************************************/
+
 static struct termios old;
 static struct termios new_;
 /* Initialize new terminal i/o settings */
@@ -45,6 +47,8 @@ char getche(void)
   return getch_(1);
 } 
 
+/**********************************************************************************************************************************************************/
+
 //compares strings ignoring case
 int stricmp (const char *p1, const char *p2)
 {
@@ -67,8 +71,10 @@ int stricmp (const char *p1, const char *p2)
  	  return c1 - c2;
 }
 
-//this structure has been created for manipulating
-//numbers in the math operations
+/**********************************************************************************************************************************************************/
+
+/*this structure has been created for manipulating
+numbers in the math operations
 class Stack
 {
 	private:
@@ -101,4 +107,103 @@ void Stack::push(int item)
 		return;
 	}
 	stck[++top] = item;
+}*/
+
+
+/************************************************************************************************************************************************************/
+
+
+//Singly Linked List for strings
+
+class LinkedList
+{
+	private:
+		typedef struct Node
+		{
+			//defines data for user defined type
+			char data[20];
+			LinkedList *next;
+		}Node;
+
+		Node *START;
+
+	public:
+		LinkedList()
+		{
+			START = NULL;
+		}
+
+		void traverse();
+		void insert(char*);
+		void remove(char*);
+		~LinkedList();
+};
+
+void LinkedList::traverse()
+{
+		LinkedList *p;
+		p = START;
+		while(p != NULL)
+		{
+			cout<<endl<<p->data;
+			p = p->next;
+		}
+}
+
+void LinkedList::insert(const char* const d)
+{
+	//Node to be inserted
+	Node *temp;
+	temp = new Node;
+
+	//copies given data to node
+	strcpy(&temp->data,d);
+	temp->next = NULL;
+
+	if(START = NULL)
+		START = temp;
+	else
+	{
+		Node *ptr = START;
+		//until end is reached
+		while(ptr->next != NULL)
+			ptr = ptr->next;
+
+		//inserts node in list
+		ptr->next = temp;
+	}
+}
+
+void LinkedList::remove(char *d)
+{
+	Node *q = START;
+	Node *prev = NULL;
+	//if the given string is in the first node
+	if(strcmp(d,START->data) == 0)
+	{
+		START = START->next;
+		delete q;
+		return;
+	}
+
+	while(strcmp(d,q->data) != 0 || q->next != NULL)
+	{
+		prev = q;
+		q = q->next;
+	}
+
+	prev = q->next;
+	delete q;
+}
+
+LinkedList::~LinkedList()
+{
+	Node *p = START;
+	//destroys the linked list object
+	while(p != NULL)
+	{
+		p = START->next;
+		delete START;
+		START = p;
+	}
 }
