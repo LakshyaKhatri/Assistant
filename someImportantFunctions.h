@@ -137,7 +137,7 @@ class LinkedList
 		void traverse();
 		void insert(const char* const);
 		void remove(char*);
-		char* getFirst();
+		void getFirst(char *);
 		~LinkedList();
 };
 
@@ -162,7 +162,7 @@ void LinkedList::insert(const char* const d)
 	strcpy(temp->data,d);
 	temp->next = NULL;
 
-	if(START = NULL)
+	if(START == NULL)
 		START = temp;
 	else
 	{
@@ -181,6 +181,7 @@ void LinkedList::remove(char *d)
 {
 	Node *q = START;
 	Node *prev = NULL;
+	
 	//if the given string is in the first node
 	if(strcmp(d,START->data) == 0)
 	{
@@ -189,21 +190,23 @@ void LinkedList::remove(char *d)
 		return;
 	}
 
-	while(strcmp(d,q->data) != 0 || q->next != NULL)
+	while(strcmp(d,q->data) != 0 && q->next != NULL)
 	{
 		prev = q;
 		q = q->next;
 	}
 
-	prev = q->next;
-	delete q;
+	if(strcmp(d,q->data) == 0)
+	{
+		prev->next = q->next;
+		delete q;
+	}
 }
 
-char* LinkedList::getFirst()
+void LinkedList::getFirst(char *toBeReturned)
 {
-	char temp[20];
 	Node *p = START;
-	strcpy(temp,START->data);
+	strcpy(toBeReturned,START->data);
 	START = START->next;
 	delete p;
 }
