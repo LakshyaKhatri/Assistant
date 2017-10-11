@@ -3,6 +3,7 @@ using namespace std;
 #include <termios.h>
 #include <stdio.h>
 #include<iostream>
+#include<string.h>
 
 /**************************************************************************************************************************************************************/
 
@@ -122,7 +123,7 @@ class LinkedList
 		{
 			//defines data for user defined type
 			char data[20];
-			LinkedList *next;
+			struct Node *next;
 		}Node;
 
 		Node *START;
@@ -134,7 +135,7 @@ class LinkedList
 		}
 
 		void traverse();
-		void insert(char*);
+		void insert(const char* const);
 		void remove(char*);
 		char* getFirst();
 		~LinkedList();
@@ -142,7 +143,7 @@ class LinkedList
 
 void LinkedList::traverse()
 {
-		LinkedList *p;
+		Node *p;
 		p = START;
 		while(p != NULL)
 		{
@@ -158,7 +159,7 @@ void LinkedList::insert(const char* const d)
 	temp = new Node;
 
 	//copies given data to node
-	strcpy(&temp->data,d);
+	strcpy(temp->data,d);
 	temp->next = NULL;
 
 	if(START = NULL)
@@ -175,6 +176,7 @@ void LinkedList::insert(const char* const d)
 	}
 }
 
+//removes a given word *word is not given by the user . It is generated while parsing the order.*
 void LinkedList::remove(char *d)
 {
 	Node *q = START;
