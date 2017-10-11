@@ -25,7 +25,7 @@ void MathCommand::getData()
 {
 	cout<<"Enter the order : ";
 	cin.getline(order,99);				//take a complete sentence from the keyboard until "ENTER" key is pressed ( defined in iostream ).
-	cout<<"Enter the Action Code : "<<endl<<"ADD 1212"<<endl<<"SUBTRACT 1213"<<endl<<"DIVIDE 1214"<<endl<<"SUBTRACT 1215"<<endl;
+	cout<<"Enter the Action Code : "<<endl<<"ADD 1212"<<endl<<"SUBTRACT 1213"<<endl<<"DIVIDE 1214"<<endl<<"MULTIPLY 1215"<<endl;
 	cin>>actionCode;
 }
 
@@ -61,7 +61,7 @@ void MathCommand::overwriteCommand()
 	ioMath.seekp(updateLocation);																//takes file pointer cursor to specified location
 	cout<<"Enter new order : ";
 	cin.getline(order,99);
-	cout<<"Enter new Action Code : "<<endl<<"ADD 1212"<<endl<<"SUBTRACT 1213"<<endl<<"DIVIDE 1214"<<endl<<"SUBTRACT 1215"<<endl;
+	cout<<"Enter new Action Code : "<<endl<<"ADD 1212"<<endl<<"SUBTRACT 1213"<<endl<<"DIVIDE 1214"<<endl<<"MULTIPLY 1215"<<endl;
 
 	cin>>actionCode; 
 
