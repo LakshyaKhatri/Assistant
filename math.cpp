@@ -112,7 +112,7 @@ void MathCommand::perform()
 	{
 		strcpy(finalTask,"espeak -g3 -s150 -a200 -v english_wmids");
 		strcat(finalTask," \"It would be, ");
-		ltoa(result,finalResult,10);
+		ltoa(result,finalResult);
 		strcat(finalTask,finalResult);
 		strcat(finalTask," .\"");
 		cout<<"\033[1;36mIt would be, "<<result<<".\033[0m"<<endl;
@@ -120,10 +120,11 @@ void MathCommand::perform()
 	}
 }
 
-void main()
+int main()
 {
-	MathCommand obj("Add 876 and 728");
+	MathCommand obj((char *)"Add 876 and 728");
 	obj.parseOrder();
 	obj.searchOrder();
 	obj.perform();
+	return 0;
 }
