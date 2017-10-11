@@ -219,3 +219,47 @@ LinkedList::~LinkedList()
 		START = p;
 	}
 }
+
+/*************************************************************************************************************************************************************/
+
+//A function that converts a long to string
+
+void ltoa(long num,char *string)
+{
+	int digit,i = 0;
+	long numCopy = num;
+	int totalDigits = 0;
+	bool negetive = false;
+
+	if(num < 0)
+	{
+		negetive = true;
+		num = -num;
+		totalDigits++;
+		numCopy = -numCopy;
+	}
+
+	while(numCopy > 0)
+	{
+		numCopy /= 10;
+		totalDigits++;
+	}
+	
+	int lastDigit = totalDigits;
+	//string[totalDigits--] = '\0';
+
+	while(num > 0)
+	{
+		digit = num%10;
+		num /= 10;
+		string[--totalDigits] = (char)('0' + (char)digit);
+	}
+
+	if(negetive == true)
+	{
+		string[0] = '-';
+	}
+
+	string[lastDigit] = '\0';
+
+}
