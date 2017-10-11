@@ -137,7 +137,7 @@ class LinkedList
 		void traverse();
 		void insert(const char* const);
 		void remove(char*);
-		void getFirst(char *);
+		int getFirst(char *);
 		~LinkedList();
 };
 
@@ -203,12 +203,15 @@ void LinkedList::remove(char *d)
 	}
 }
 
-void LinkedList::getFirst(char *toBeReturned)
+int LinkedList::getFirst(char *toBeReturned)
 {
+	if(START == NULL)
+		return 0;
 	Node *p = START;
 	strcpy(toBeReturned,START->data);
 	START = START->next;
 	delete p;
+	return 1;
 }
 
 LinkedList::~LinkedList()
