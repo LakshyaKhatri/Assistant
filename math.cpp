@@ -1,7 +1,11 @@
 #include"someImportantFunctions.h"
 #include<string.h>
 #include<stdlib.h>
+#include<cstdlib>
+#include<fstream>
 
+#define FOUND 1
+#define NOTFOUND 0
 //action codes for performing any specific operation
 
 #define ADD 1212
@@ -10,6 +14,7 @@
 #define MULTIPLY 1215
 
 fstream ioMath;
+short flag = NOTFOUND;
 LinkedList sentence;
 long  num1 = 0,num2 = 0,result = 0;
 
@@ -32,7 +37,7 @@ MathCommand::MathCommand(char *o)
 
 void MathCommand::parseOrder()
 {
-	int i = 0, j = 0, k = 1;i
+	int i = 0, j = 0, k = 1;
 	char word[20],number[20];
 	do
 	{
@@ -68,7 +73,7 @@ void MathCommand::searchOrder()
 {
 	char *word;
 	MathCommand *temp;
-	ioMath.open("MathCommandFile.txt", ios::ate || ios::out || ios::in );
+	ioMath.open("MathCommandFile.txt", ios::ate | ios::out | ios::in );
 	ioMath.seekg(ios::beg);
 	while(ioMath.read((char *) &temp, sizeof(temp)))
 	{
@@ -105,7 +110,7 @@ void MathCommand::perform()
 
 	if(flag == FOUND)
 	{
-		strcpy(finalTask,"espeak -g3 -s150 -a200 -v english_wmids"));
+		strcpy(finalTask,"espeak -g3 -s150 -a200 -v english_wmids");
 		strcat(finalTask," \"It would be, ");
 		ltoa(result,finalResult,10);
 		strcat(finalTask,finalResult);
@@ -115,3 +120,10 @@ void MathCommand::perform()
 	}
 }
 
+void main()
+{
+	MathCommand obj("Add 876 and 728");
+	obj.parseOrder();
+	obj.searchOrder();
+	obj.perform();
+}
