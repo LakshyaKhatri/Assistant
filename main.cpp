@@ -1,13 +1,17 @@
 //#include"someImportantFunctions.h"
+
 #include<stdlib.h>
 #include<fstream>
 #include<string.h>
 #include<unistd.h>
 #include"createCommandFile.cpp"
+#define FOUND 1
+#define NOTFOUND 0
 
 fstream iCommand;								//object of class fstream , will perform the input operations from file to program
 char finalAction[150];
-int flag = 0;
+
+int flag = NOTFOUND;
 
 class GeneralCommand
 {
@@ -44,6 +48,7 @@ void GeneralCommand::getOrder()
 void GeneralCommand::searchOrder()
 {
 	GeneralCommand temp;
+	//char mathTemp[100];
 	iCommand.seekg(ios::beg);								//takes file pointer to the beginning
 	char ch = '\0';
 	//Until EOF is reached search order in Commands.txt :-
@@ -57,12 +62,18 @@ void GeneralCommand::searchOrder()
 			strcat(finalAction,temp.action);
 			strcat(finalAction,"\"");
 			strcpy(this->action,temp.action);
-			flag = 0;
+			flag = FOUND;
 			return;
 		}
 	}
 
-	//If order not found
+	//If order not found search MathCommandFile.txt
+	//strcpy(mathTemp,order);
+	//flag = isMathCommand(mathTemp);
+	//if(flad == FOUND)
+	//	return;
+
+	//If order is found nowhere do this
 	cout<<"\033[1;36mI cannot understand what you say !\033[0m"<<endl;
 	system("espeak -g3 -s150 -a200 -v english_wmids \"I Cannot understand what you say !\"");
 	sleep(0.6);
@@ -73,21 +84,24 @@ void GeneralCommand::searchOrder()
 	ch = getche();
 	if(ch == 'y')
 		createCommandMainMethod();
-	flag = 1;
+	flag = NOTFOUND;
 }
 
 void GeneralCommand::perform()
 {
-	if(flag == 0)
+	if(flag == FOUND)
+	{
 		cout<<"\033[1;36m"<<action<<"\033[0m"<<"\n";
-
-	system(finalAction);
-	finalAction[0] = '\0';
+		system(finalAction);
+		finalAction[0] = '\0';
+	}
 }
 
 int main()
 {
 	GeneralCommand general;
+	//MathCommand math;
+
 	iCommand.open("Commands.txt", ios::ate | ios::out | ios::in );
 	if(iCommand.fail())
 	{
