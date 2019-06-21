@@ -1,4 +1,4 @@
-<img src="https://github.com/LakshyaKhatri/Assistant/blob/master/assets/logo/logo.png" alt="Aimeos logo" title="Aimeos" align="right" height="60" />
+<img src="https://github.com/LakshyaKhatri/Assistant/blob/master/assets/logo/logo.png" alt="Aimeos logo" title="Aimeos" align="right" height="100" />
 
 Assistant
 =========
@@ -16,9 +16,11 @@ Well well! Have a look at these features:
 * It can play songs for you.
 * Don't you know what day is today? Ask your Assistant then.
 * Not Satisfyied? You can add your own functionalities too.
-* And Assistant is not married yet!
+* And, Assistant is not married yet!
 
 ## Demo
+Click to play video:
+
 [![Demo](https://github.com/LakshyaKhatri/Assistant/blob/master/assets/demo_thumbnail.png)](https://www.youtube.com/watch?v=dVjXoSZKHDs&t=6s)
 ## Dependencies
 * Currently Assistant works only on *Windows 10* version of windows platform.
@@ -50,15 +52,18 @@ sudo apt-get install espeak
   * Choose the option for whatever editing you need and press enter.
   * Perform the edting.
 
-*__Note:__ Do not add any punctuation markes at the end of the commands. Assistant will automatically handle them.*
+> *__Note:__*  
+> 1. *Do not add any punctuation markes at the end of the orders. Assistant will automatically handle them.*
+> 2. *You need to add punctuations marks in the respnses for explaining proper expressions to the Assistant for speaking.*  
 
 **Math Opearions:**  
-All the steps are same but instead of `createCommandFile.exe` use `mathCommandFile.exe`  and in linux use `./mathCommandFile` instead of `./createCommandFile`.
+All the steps are same but instead of `createCommandFile.exe` use `mathCommandFile.exe`  and in linux use `./mathCommandFile` instead of `./createCommandFile`.  
 
 **Advanced Operations:**  
 Advance operaions include playing music and telling dates. You can add keywords for trigerring your advance commands and then edit the respond in `AdvanceCommandFile.cpp`.
 
 ## Contribution
-You can for the repository and make any changes you want.
+You can for the repository and make any changes you want. I would love to see the changes 🧡.  
+
 
 -----------------------------------------------------------
