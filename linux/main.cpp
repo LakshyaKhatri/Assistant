@@ -22,7 +22,7 @@ class GeneralCommand
 		GeneralCommand()
 		{
 			order[0] = '\0';
-			action[0] = '\0'; 
+			action[0] = '\0';
 		}
 		void getOrder();
 		void searchOrder();
@@ -34,7 +34,7 @@ void GeneralCommand::getOrder()
 	fflush(stdin);
 	fflush(0);
 	cin.getline(order,99);
-	
+
 	if(stricmp(order,(char *)"exit") == 0 || stricmp(order,(char *)"bye") == 0)
 	{
 		cout<<"\033[1;36mSee you Later !\033[0m\n";											//prints text in cyan bright bold color
@@ -84,6 +84,10 @@ void GeneralCommand::searchOrder()
 	ch = getche();
 	if(ch == 'y')
 		createCommandMainMethod();
+    else{
+        cout<<"\033[1;36mOkay!\033[0m"<<endl;
+    	system("espeak -g3 -s150 -a200 -v english_wmids \"Okay!\"");
+    }
 	flag = NOTFOUND;
 }
 
@@ -108,7 +112,7 @@ int main()
 		cout<<"Error in opening Commands.dat\n";
 		exit(0);
 	}
-	
+
 	cout<<"\n\033[1;36mHello! How can Jarvis help you ?\033[0m\n";
 	system("espeak -g3 -s150 -a200 -v english_wmids \"Hello ! How can Jarvis help you ?\"");
 
