@@ -12,11 +12,16 @@ void orderNotFound()
 	Sleep(0.6);
 	cout<<"\033[1;36mI will learn these things soon.\033[0m"<<endl;
 	system("say.vbs \"I will learn these things soon.\"");
-	cout<<"\033[1;36mWant to teach me..??\033[0m"<<endl;
+	cout<<"\033[1;36mWant to teach me..??(y/n)\033[0m"<<endl;
 	fflush(stdin);
 	ch = getch();
-	if(ch == 'y')
+	cout << char(ch);
+  if(ch == 'y')
 		createCommandMainMethod();
+    else{
+        cout<<"\033[1;36mOkay!\033[0m"<<endl;
+    	system("say.vbs \"Okay!\"");
+    }
 }
 
 int main()
