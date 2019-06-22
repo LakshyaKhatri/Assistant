@@ -1,4 +1,4 @@
-<img src="https://github.com/LakshyaKhatri/Assistant/blob/master/assets/logo/logo.png" alt="Aimeos logo" title="Aimeos" align="right" height="200" />
+<img src="https://github.com/LakshyaKhatri/Assistant/blob/master/assets/logo/logo.png" alt="Assistant logo" title="Assistant" align="right" height="200" />
 
 Assistant
 =========
