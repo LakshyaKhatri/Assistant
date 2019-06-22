@@ -12,7 +12,7 @@ Yes! It actually speaks. :D
 ## What Assistant Can Do for Me?
 Well well! Have a look at these features:
 * Assistant can actually talk to you.
-* Ask your Assistant perform basic mathematical operations.
+* Ask your Assistant to perform basic mathematical operations.
 * It can play songs for you.
 * Don't you know what day is today? Ask your Assistant then.
 * Not Satisfyied? You can add your own functionalities too.
@@ -53,7 +53,7 @@ sudo apt-get install espeak
   * Perform the edting.
 
 > *__Note:__*  
-> 1. *Do not add any punctuation markes at the end of the orders. Assistant will automatically handle them.*
+> 1. *Do not add any punctuation marks at the end of the orders. Assistant will automatically handle them.*
 > 2. *You need to add punctuations marks in the respnses for explaining proper expressions to the Assistant for speaking.*  
 
 **Math Opearions:**  
@@ -63,7 +63,7 @@ All the steps are same but instead of `createCommandFile.exe` use `mathCommandFi
 Advance operaions include playing music and telling dates. You can add keywords for trigerring your advance commands and then edit the respond in `AdvanceCommandFile.cpp`.
 
 ## Contribution
-You can for the repository and make any changes you want. I would love to see the changes 🧡.  
+You can fork the repository and make any changes you want. I would love to see the changes ♡.  
 
 
 -----------------------------------------------------------
