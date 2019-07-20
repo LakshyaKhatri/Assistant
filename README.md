@@ -21,7 +21,7 @@ Well well! Have a look at these features:
 ## Demo
 Click to play video:
 
-[![Demo](https://github.com/LakshyaKhatri/Assistant/blob/master/assets/demo_thumbnail.png)](https://www.youtube.com/watch?v=dVjXoSZKHDs&t=6s)
+[![Demo](https://github.com/LakshyaKhatri/Assistant/blob/master/assets/demo_image.png)](https://www.youtube.com/watch?v=dVjXoSZKHDs&t=6s)
 ## Dependencies
 * Currently Assistant works only on *Windows 10* version of windows platform.
 * For linux you need to install [Espeak](http://espeak.sourceforge.net/). Just type these commands in the terminal:  
