@@ -54,7 +54,7 @@ sudo apt-get install espeak
 
 > *__Note:__*  
 > 1. *Do not add any punctuation marks at the end of the orders. Assistant will automatically handle them.*
-> 2. *You need to add punctuations marks in the respnses for explaining proper expressions to the Assistant for speaking.*  
+> 2. *You need to add punctuations marks in the responses for explaining proper expressions to the Assistant for speaking.*  
 
 **Math Opearions:**  
 All the steps are same but instead of `createCommandFile.exe` use `mathCommandFile.exe`  and in linux use `./mathCommandFile` instead of `./createCommandFile`.  
